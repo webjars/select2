@@ -4,19 +4,19 @@
     <groupId>org.webjars</groupId>
     <artifactId>select2</artifactId>
     <name>Select2</name>
-    <version>2.1-1</version>
+    <version>3.2</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <select2.version>2.1</select2.version>
-        <select2.sourceUrl>https://github.com/downloads/ivaynberg/select2/</select2.sourceUrl>
-        <destDir>${project.build.directory}/classes/public</destDir>
+        <select2.version>3.2</select2.version>
+        <select2.sourceUrl>https://raw.github.com/ivaynberg/select2/release-${project.version}</select2.sourceUrl>
+        <destDir>${project.build.directory}/classes/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>com.jquery</groupId>
+            <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>1.7.2</version>
+            <version>1.8.2</version>
         </dependency>
     </dependencies>
     <build>
@@ -27,27 +27,63 @@
                 <version>1.0-beta-4</version>
                 <executions>
                     <execution>
+                        <id>select2.css</id>
                         <phase>process-resources</phase>
                         <goals><goal>download-single</goal></goals>
                         <configuration>
                             <url>${select2.sourceUrl}</url>
-                            <fromFile>select2-${select2.version}.zip</fromFile>
-                            <toFile>${project.build.directory}/select2.zip</toFile>
+                            <fromFile>select2.css</fromFile>
+                            <toDir>${destDir}</toDir>
                         </configuration>
                     </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>truezip-maven-plugin</artifactId>
-                <version>1.0</version>
-                <executions>
                     <execution>
+                        <id>select2.js</id>
                         <phase>process-resources</phase>
-                        <goals><goal>cp</goal></goals>
+                        <goals><goal>download-single</goal></goals>
                         <configuration>
-                            <from>${project.build.directory}/select2.zip</from>
-                            <to>${destDir}</to>
+                            <url>${select2.sourceUrl}</url>
+                            <fromFile>select2.js</fromFile>
+                            <toDir>${destDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>select2.min.js</id>
+                        <phase>process-resources</phase>
+                        <goals><goal>download-single</goal></goals>
+                        <configuration>
+                            <url>${select2.sourceUrl}</url>
+                            <fromFile>select2.min.js</fromFile>
+                            <toDir>${destDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>select2.png</id>
+                        <phase>process-resources</phase>
+                        <goals><goal>download-single</goal></goals>
+                        <configuration>
+                            <url>${select2.sourceUrl}</url>
+                            <fromFile>select2.png</fromFile>
+                            <toDir>${destDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>select2x2.png</id>
+                        <phase>process-resources</phase>
+                        <goals><goal>download-single</goal></goals>
+                        <configuration>
+                            <url>${select2.sourceUrl}</url>
+                            <fromFile>select2x2.png</fromFile>
+                            <toDir>${destDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>spinner.gif</id>
+                        <phase>process-resources</phase>
+                        <goals><goal>download-single</goal></goals>
+                        <configuration>
+                            <url>${select2.sourceUrl}</url>
+                            <fromFile>spinner.gif</fromFile>
+                            <toDir>${destDir}</toDir>
                         </configuration>
                     </execution>
                 </executions>

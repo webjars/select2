@@ -1,21 +1,3 @@
 Select2 WebJar
 
-Current GroupId:
-org.webjars
-
-Current ArtifactId:
-select2
-
-Current Version:
-3.2
-
-Current Layout:
-META-INF/resources/webjars/select2/3.2/select2.png
-META-INF/resources/webjars/select2/3.2/select2x2.png
-META-INF/resources/webjars/select2/3.2/select2.css
-META-INF/resources/webjars/select2/3.2/spinner.gif
-META-INF/resources/webjars/select2/3.2/select2.min.js
-META-INF/resources/webjars/select2/3.2/select2.js
-
-Previous Versions:
-2.1-1
+More info: http://webjars.org

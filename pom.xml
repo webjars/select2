@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>select2</artifactId>
-    <version>3.3-SNAPSHOT</version>
+    <version>3.3.1-SNAPSHOT</version>
     <name>Select2</name>
     <description>WebJar for Select2</description>
     <url>http://webjars.org</url>
@@ -41,9 +41,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <select2.version>3.2</select2.version>
-        <select2.sourceUrl>https://raw.github.com/ivaynberg/select2/release-${select2.version}</select2.sourceUrl>
-        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${select2.version}</destDir>
+        <upstream.version>3.3.1</upstream.version>
+        <upstream.url>https://github.com/ivaynberg/select2/archive</upstream.url>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
     </properties>
 
     <dependencies>
@@ -62,63 +62,34 @@
                 <version>1.0-beta-4</version>
                 <executions>
                     <execution>
-                        <id>select2.css</id>
                         <phase>process-resources</phase>
-                        <goals><goal>download-single</goal></goals>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
                         <configuration>
-                            <url>${select2.sourceUrl}</url>
-                            <fromFile>select2.css</fromFile>
-                            <toDir>${destDir}</toDir>
+                            <url>${upstream.url}</url>
+                            <fromFile>${upstream.version}.zip</fromFile>
+                            <toFile>${project.build.directory}/${project.artifactId}.zip</toFile>
                         </configuration>
                     </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
                     <execution>
-                        <id>select2.js</id>
                         <phase>process-resources</phase>
-                        <goals><goal>download-single</goal></goals>
+                        <goals><goal>run</goal></goals>
                         <configuration>
-                            <url>${select2.sourceUrl}</url>
-                            <fromFile>select2.js</fromFile>
-                            <toDir>${destDir}</toDir>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>select2.min.js</id>
-                        <phase>process-resources</phase>
-                        <goals><goal>download-single</goal></goals>
-                        <configuration>
-                            <url>${select2.sourceUrl}</url>
-                            <fromFile>select2.min.js</fromFile>
-                            <toDir>${destDir}</toDir>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>select2.png</id>
-                        <phase>process-resources</phase>
-                        <goals><goal>download-single</goal></goals>
-                        <configuration>
-                            <url>${select2.sourceUrl}</url>
-                            <fromFile>select2.png</fromFile>
-                            <toDir>${destDir}</toDir>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>select2x2.png</id>
-                        <phase>process-resources</phase>
-                        <goals><goal>download-single</goal></goals>
-                        <configuration>
-                            <url>${select2.sourceUrl}</url>
-                            <fromFile>select2x2.png</fromFile>
-                            <toDir>${destDir}</toDir>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>spinner.gif</id>
-                        <phase>process-resources</phase>
-                        <goals><goal>download-single</goal></goals>
-                        <configuration>
-                            <url>${select2.sourceUrl}</url>
-                            <fromFile>spinner.gif</fromFile>
-                            <toDir>${destDir}</toDir>
+                            <target>
+                                <echo message="unzip archive" />
+                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
+                                <echo message="moving resources" />
+                                <move todir="${destDir}">
+                                    <fileset dir="${project.build.directory}/select2-${upstream.version}" />
+                                </move>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>
@@ -131,34 +102,4 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>release-sign-artifacts</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <property>
-                    <name>performRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.2</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-    
 </project>

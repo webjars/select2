@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>select2</artifactId>
-    <version>3.3.2-SNAPSHOT</version>
+    <version>3.3.1-1-SNAPSHOT</version>
     <name>Select2</name>
     <description>WebJar for Select2</description>
     <url>http://webjars.org</url>

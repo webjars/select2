@@ -44,6 +44,11 @@
         <upstream.version>3.4.8</upstream.version>
         <upstream.url>http://github.com/ivaynberg/select2/archive</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
+        <requirejs>
+            {
+                "paths": { "select2": "select2" },
+                "shim": { "select2": [ "jquery.js" ] }
+            }
     </properties>
 
     <dependencies>

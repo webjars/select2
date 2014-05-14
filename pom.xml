@@ -49,6 +49,7 @@
                 "paths": { "select2": "select2" },
                 "shim": { "select2": [ "jquery.js" ] }
             }
+        </requirejs>
     </properties>
 
     <dependencies>

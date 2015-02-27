@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>select2</artifactId>
-    <version>4.0.0-beta.3-SNAPSHOT</version>
+    <version>4.0.0-beta.3</version>
     <name>Select2</name>
     <description>WebJar for Select2</description>
     <url>http://webjars.org</url>
@@ -28,7 +28,7 @@
         <url>http://github.com/webjars/select2</url>
         <connection>scm:git:https://github.com/webjars/select2.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/select2.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>select2-4.0.0-beta.3</tag>
     </scm>
 
     <developers>
@@ -89,11 +89,11 @@
                         <goals><goal>run</goal></goals>
                         <configuration>
                             <target>
-                                <echo message="unzip archive"/>
-                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}"/>
-                                <echo message="moving resources"/>
+                                <echo message="unzip archive" />
+                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
+                                <echo message="moving resources" />
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/select2-${upstream.version}"/>
+                                    <fileset dir="${project.build.directory}/select2-${upstream.version}" />
                                 </move>
                             </target>
                         </configuration>

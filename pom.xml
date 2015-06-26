@@ -93,7 +93,7 @@
                                 <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
                                 <echo message="moving resources" />
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/select2-${upstream.version}" />
+                                    <fileset dir="${project.build.directory}/select2-${upstream.version}/dist" />
                                 </move>
                             </target>
                         </configuration>

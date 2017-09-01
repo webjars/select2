@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>select2</artifactId>
-    <version>4.0.4-SNAPSHOT</version>
+    <version>4.0.3-1-SNAPSHOT</version>
     <name>Select2</name>
     <description>WebJar for Select2</description>
     <url>http://webjars.org</url>
@@ -93,7 +93,7 @@
                                 <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
                                 <echo message="moving resources" />
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/select2-${upstream.version}" />
+                                    <fileset dir="${project.build.directory}/select2-${upstream.version}/dist" />
                                 </move>
                             </target>
                         </configuration>

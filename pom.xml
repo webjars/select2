@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>select2</artifactId>
-    <version>4.0.13</version>
+    <version>4.0.14-SNAPSHOT</version>
     <name>Select2</name>
     <description>WebJar for Select2</description>
     <url>http://webjars.org</url>
@@ -28,7 +28,7 @@
         <url>http://github.com/webjars/select2</url>
         <connection>scm:git:https://github.com/webjars/select2.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/select2.git</developerConnection>
-        <tag>select2-4.0.13</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
